@@ -1,16 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import type { ProductItem } from '../types/types';
 
-interface ProductItem{
-    id:string;
-    name: string;
-    image: string;
-    price: string;
-    rating: number;
-    votes: number;
-    popular: boolean;
-    available: boolean;
-}
+
 
 const useProducts = () => {
   const [products, setProducts] = useState<Array<ProductItem>>([]);

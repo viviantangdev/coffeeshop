@@ -1,8 +1,19 @@
+import { useState } from 'react';
 import useProducts from '../hooks/useProducts';
+import type { Menu, ProductItem } from '../types/types';
 import Card from './Card';
 
 const Home = () => {
   const { products } = useProducts();
+  const [activeMenu, setActiveMenu] = useState<Menu>('All products');
+  const allProducts: ProductItem[] = products;
+  const availableProducts: ProductItem[] = products.filter(
+    (p) => p.available === true
+  );
+
+  function handleActiveMenu(menu: Menu) {
+    setActiveMenu(menu);
+  }
 
   return (
     <main className='absolute top-8 mx-3 rounded-lg'>
@@ -17,29 +28,55 @@ const Home = () => {
           </p>
         </div>
       </div>
-      {/* Product selection (All products or Available now)*/}
+      {/* Menu selection (All products or Available now)*/}
       <div className='flex justify-center gap-5'>
-        <button type='button' className='activeBtn'>
+        <button
+          type='button'
+          className={`${
+            activeMenu === 'All products' ? 'activeBtn' : 'inactiveBtn'
+          }`}
+          onClick={() => handleActiveMenu('All products')}
+        >
           All Products
         </button>
-        <button type='button' className='inactiveBtn'>
+        <button
+          type='button'
+          className={`${
+            activeMenu === 'Available now' ? 'activeBtn' : 'inactiveBtn'
+          }`}
+          onClick={() => handleActiveMenu('Available now')}
+        >
           Available Now
         </button>
       </div>
       {/* List of products */}
       <div className='grid grid-flow-row grid-cols-1 place-items-center py-8 gap-5'>
-        {products.map((p) => (
-          <Card
-          key={p.id}
-            name={p.name}
-            image={p.image}
-            price={p.price}
-            rating={p.rating}
-            votes={p.votes}
-            popular={p.popular}
-            available={p.available}
-          />
-        ))}
+        {activeMenu === 'All products' &&
+          allProducts.map((p) => (
+            <Card
+              key={p.id}
+              name={p.name}
+              image={p.image}
+              price={p.price}
+              rating={p.rating}
+              votes={p.votes}
+              popular={p.popular}
+              available={p.available}
+            />
+          ))}
+        {activeMenu === 'Available now' &&
+          availableProducts.map((p) => (
+            <Card
+              key={p.id}
+              name={p.name}
+              image={p.image}
+              price={p.price}
+              rating={p.rating}
+              votes={p.votes}
+              popular={p.popular}
+              available={p.available}
+            />
+          ))}
       </div>
     </main>
   );
