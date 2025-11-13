@@ -3,8 +3,8 @@ import Home from './Components/Home';
 
 function App() {
   return (
-    <div>
-      <img src={BgCofe} alt='Cofe shop' className='relative' />
+    <div className='w-screen min-h-screen flex flex-col items-center'>
+      <img src={BgCofe} alt='Cofe shop'  className='w-full'/>
       <Home />
     </div>
   );

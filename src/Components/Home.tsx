@@ -16,7 +16,7 @@ const Home = () => {
   }
 
   return (
-    <main className='absolute top-8 mx-3 rounded-lg'>
+    <main className='absolute top-10 lg:top-40 mx-3 lg:mx-10 rounded-lg'>
       {/*Header introduction */}
       <div className='bg-[url("/src/assets/vector.svg")] bg-center bg-contain bg-no-repeat'>
         <div className='flex flex-col items-center pt-10 pb-5'>
@@ -50,7 +50,7 @@ const Home = () => {
         </button>
       </div>
       {/* List of products */}
-      <div className='grid grid-flow-row grid-cols-1 place-items-center py-8 gap-5'>
+      <div className='grid grid-flow-row grid-cols-1 lg:grid-cols-3 place-items-center py-8 gap-5'>
         {activeMenu === 'All products' &&
           allProducts.map((p) => (
             <Card
