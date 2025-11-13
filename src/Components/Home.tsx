@@ -52,30 +52,12 @@ const Home = () => {
       {/* List of products */}
       <div className='grid grid-flow-row grid-cols-1 lg:grid-cols-3 place-items-center py-8 gap-5'>
         {activeMenu === 'All products' &&
-          allProducts.map((p) => (
-            <Card
-              key={p.id}
-              name={p.name}
-              image={p.image}
-              price={p.price}
-              rating={p.rating}
-              votes={p.votes}
-              popular={p.popular}
-              available={p.available}
-            />
+          allProducts.map((product) => (
+            <Card key={product.id} product={product} />
           ))}
         {activeMenu === 'Available now' &&
-          availableProducts.map((p) => (
-            <Card
-              key={p.id}
-              name={p.name}
-              image={p.image}
-              price={p.price}
-              rating={p.rating}
-              votes={p.votes}
-              popular={p.popular}
-              available={p.available}
-            />
+          availableProducts.map((product) => (
+            <Card key={product.id} product={product} />
           ))}
       </div>
     </main>

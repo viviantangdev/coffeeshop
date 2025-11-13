@@ -19,10 +19,15 @@
   --color-surfaceText: #6f757c;
 
   --color-activeBtnBg: #4d5562;
-  --color-accent: #F6C768;
+  --color-accent: #f6c768;
 
-  --color-priceBg: #BEE3CC;
-  --color-soldout: #ED735D;
+  --color-priceBg: #bee3cc;
+  --color-soldout: #ed735d;
+
+  --transition-smooth: all 0.2s ease-in-out;
+}
+@utility transition-smooth {
+  transition: var(--transition-smooth);
 }
 body {
   @apply bg-primaryBg text-body text-primaryText font-body;
@@ -32,9 +37,16 @@ main {
   @apply bg-secondaryBg px-15;
 }
 
+button {
+  @apply cursor-pointer rounded-lg  p-2 text-body transition-smooth;
+  &:hover {
+    @apply bg-activeBtnBg;
+  }
+}
+
 .activeBtn {
-  @apply bg-activeBtnBg rounded-lg  p-2 text-body;
+  @apply bg-activeBtnBg;
 }
 .inactiveBtn {
-  @apply rounded-lg  p-2 text-body;
+  @apply bg-transparent;
 }
