@@ -1,5 +1,40 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import 'tailwindcss';
 
-body{
-  @apply bg-amber-200;
+@theme {
+  --font-body: 'DMSans', sans-serif;
+
+  --text-heading: 2rem;
+  --text-body: 1rem;
+  --text-label: 0.875rem;
+  --text-small: 0.625rem;
+  --text-price: 0.75rem;
+
+  --color-primaryBg: #111315;
+  --color-primaryText: #fef7ee;
+
+  --color-secondaryBg: #1b1d1f;
+  --color-secondaryText: #1b1d1f;
+
+  --color-surfaceText: #6f757c;
+
+  --color-activeBtnBg: #4d5562;
+  --color-accent: #F6C768;
+
+  --color-priceBg: #BEE3CC;
+  --color-soldout: #ED735D;
+}
+body {
+  @apply bg-primaryBg text-body text-primaryText font-body;
+}
+
+main {
+  @apply bg-secondaryBg px-15;
+}
+
+.activeBtn {
+  @apply bg-activeBtnBg rounded-lg  p-2 text-body;
+}
+.inactiveBtn {
+  @apply rounded-lg  p-2 text-body;
 }
